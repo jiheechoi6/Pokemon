@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d77d9ac-1bd6-4d8d-b0c8-395de0c022b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presenter/graphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Presenter/graphics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/grass.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/grass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/sequence.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Usecase/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Usecase/match.py" beforeDir="false" afterPath="$PROJECT_DIR$/Usecase/match.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
