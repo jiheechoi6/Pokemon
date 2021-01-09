@@ -10,6 +10,6 @@ class Graphics:
         screen = pygame.display.get_surface()
         image = pygame.image.load('start_game_button.png')
         pygame.transform.scale(image, (1, 1))
-        screen.blit(image, (300, 100))
+        screen.blit(image, (190, 270))
 
         pygame.display.update()
