@@ -18,10 +18,10 @@ class Graphics:
 
     def draw_start_game_screen(self):
         screen = pygame.display.get_surface()
-        background_img = pygame.image.load('./img/background.png')
+        background_img = pygame.image.load('../img/background.png')
         screen.blit(background_img, (0, 0))
         pygame.draw.rect(screen, (255, 228, 228), (167, 266, 540, 120))
-        image = pygame.image.load('./img/start_game_button.png')
+        image = pygame.image.load('../img/start_game_button.png')
 
         screen.blit(image, (190, 270))
 
@@ -44,8 +44,8 @@ class Graphics:
     def draw_grass_scene(self, pokemon_type: int):
         screen = pygame.display.get_surface()
         pygame.draw.rect(screen, (193, 204, 80), (0, 0, 900, 700)) # set background to green
-        image = pygame.image.load('./img/door.png')
-        image2 = pygame.image.load('./img/grass2.png')
+        image = pygame.image.load('../img/door.png')
+        image2 = pygame.image.load('../img/grass2.png')
 
         # draw door and grass
         self.create_random_door_positions()
@@ -60,11 +60,11 @@ class Graphics:
         # draw player
 
         if pokemon_type == 0:
-            self._player_img_small = './img/pokemon_0_small.png'
+            self._player_img_small = '../img/pokemon_0_small.png'
         elif pokemon_type == 1:
-            self._player_img_small = './img/pokemon_1_small.png'
+            self._player_img_small = '../img/pokemon_1_small.png'
         else:
-            self._player_img_small = './img/pokemon_2_small.png'
+            self._player_img_small = '../img/pokemon_2_small.png'
 
         player_img = pygame.image.load(self._player_img_small)
 
@@ -76,8 +76,8 @@ class Graphics:
     def draw_moving_player(self, up:bool, right:bool, down: bool, left: bool):
         screen = pygame.display.get_surface()
         player_img = pygame.image.load(self._player_img_small)
-        image = pygame.image.load('./img/door.png')
-        image2 = pygame.image.load('./img/grass2.png')
+        image = pygame.image.load('../img/door.png')
+        image2 = pygame.image.load('../img/grass2.png')
 
         if up:
             self._player_pos[1] -= 10
@@ -104,10 +104,10 @@ class Graphics:
     def draw_choose_a_pokemon(self):
         print("check")
         screen = pygame.display.get_surface()
-        background_img = pygame.image.load('./img/background_light.png')
-        pokemon0_img = pygame.image.load('./img/pokemon_0.png')
-        pokemon1_img = pygame.image.load('./img/pokemon_1.png')
-        pokemon2_img = pygame.image.load('./img/pokemon_2.png')
+        background_img = pygame.image.load('../img/background_light.png')
+        pokemon0_img = pygame.image.load('../img/pokemon_0.png')
+        pokemon1_img = pygame.image.load('../img/pokemon_1.png')
+        pokemon2_img = pygame.image.load('../img/pokemon_2.png')
 
         my_font = pygame.font.SysFont('freesansbold', 55)
         label = my_font.render("Choose a pokemon!", True, (0, 0, 0))
