@@ -25,4 +25,10 @@ class Match:
         if self._pokemon_bot.get_hp() <= 0:
             return True
         return False
+    
+    def is_player_win(self):
+        if self._player.get_hp() <= 0:
+            return False
+        else:
+            return True
 
