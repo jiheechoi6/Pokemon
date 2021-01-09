@@ -8,16 +8,20 @@ from Entity.pokemonBot import PokemonBot
 class Match:
     _players: Player
     _pokemon_bot: PokemonBot
+    _attacked: bool
 
     def __init__(self, pokemon_type: int):
         self._player = Player(pokemon_type)
         self._pokemon_bot = PokemonBot(random.randint(5))
+        self._attacked = None
 
     def attack(self, attack_strength: int) -> None:
         self._pokemon_bot.updateHp(-attack_strength)
+        self._attacked = True
 
-    def receive_attack(self, attack_sgittrength: int) -> None:
+    def receive_attack(self, attack_strength: int) -> None:
         self._player.updateHp(-attack_strength)
+        self._attacked = False
 
     def is_game_over(self):
         if self._player.get_hp() <= 0:
