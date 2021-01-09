@@ -9,14 +9,14 @@ class Match:
     _players: Player
     _pokemon_bot: PokemonBot
 
-    def __init__(self):
-        self._player = Player(100)
+    def __init__(self, pokemon_type: int):
+        self._player = Player(pokemon_type)
         self._pokemon_bot = PokemonBot(random.randint(5))
 
     def attack(self, attack_strength: int) -> None:
         self._pokemon_bot.updateHp(-attack_strength)
 
-    def receive_attack(self, attack_strength: int) -> None:
+    def receive_attack(self, attack_sgittrength: int) -> None:
         self._player.updateHp(-attack_strength)
 
     def is_game_over(self):
@@ -25,3 +25,4 @@ class Match:
         if self._pokemon_bot.get_hp() <= 0:
             return True
         return False
+
