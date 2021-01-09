@@ -1,38 +1,25 @@
-class PokemonBot:
-    _hp: int
-    _max_hp: int
-    _pokemon_type: int
-    _pic: str
+from Entity.pokemon import Pokemon
 
+class PokemonBot(Pokemon):
     def __init__(self, pokemon_type: int):
-        self._pokemonType = pokemon_type
         if pokemon_type == 0:
-            self._max_hp = 60
-            self._pic = '../img/egg.png'
+            max_hp = 60
+            pic = '../img/pokemon_1_small.png'
+            name = 'Togepi'
         elif pokemon_type == 1:
-            self._max_hp = 70
-            self._pic = '../img/pika.png'
+            max_hp = 70
+            pic = '../img/pika.png'
+            name = 'Pikachu'
         elif pokemon_type == 2:
-            self._max_hp = 80
-            self._pic = '../img/mimikyu.png'
+            max_hp = 80
+            pic = '../img/mimikyu.png'
+            name = 'Mimikyu'
         elif pokemon_type == 3:
-            self._max_hp = 90
-            self._pic = '../img/lugia.png'
+            max_hp = 90
+            pic = '../img/lugia.png'
+            name = 'Lugia'
         else:
-            self._max_hp = 100
-            self._pic = '../img/egg.png'
-
-    def updateHp(self, hp: int):
-        self._hp += hp
-
-    def getPokemonType(self):
-        return self._pokemon_type
-
-    def get_hp(self):
-        return self._hp
-
-    def get_max_hp(self):
-        return self._max_hp
-
-    def get_pic(self):
-        return self._pic
+            max_hp = 100
+            pic = '../img/pokemon_2_small.png'
+            name = 'Bulbasaur'
+        super().__init__(pokemon_type, max_hp, pic, name)
