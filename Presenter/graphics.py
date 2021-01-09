@@ -17,7 +17,7 @@ class Graphics:
     def draw_start_game_screen(self):
         screen = pygame.display.get_surface()
         pygame.draw.rect(screen, (255, 128, 128), (0, 0, 900, 700))
-        image = pygame.image.load('./img/start_game_button.png')
+        image = pygame.image.load('../img/start_game_button.png')
         screen.blit(image, (190, 270))
 
         pygame.display.update()
@@ -35,8 +35,8 @@ class Graphics:
     def draw_grass_scene(self):
         screen = pygame.display.get_surface()
         pygame.draw.rect(screen, (193, 204, 80), (0, 0, 900, 700)) # set background to green
-        image = pygame.image.load('./img/door.png')
-        image2 = pygame.image.load('./img/grass2.png')
+        image = pygame.image.load('../img/door.png')
+        image2 = pygame.image.load('../img/grass2.png')
 
         # draw door and grass
         self.create_random_door_positions()
@@ -49,7 +49,7 @@ class Graphics:
                 screen.blit(image2, (x_pos, y_pos))
 
         # draw player
-        player_img = pygame.image.load('./img/egg.png')
+        player_img = pygame.image.load('../img/egg.png')
         screen.blit(player_img, (420, 300))
         self._player_pos = [420, 300]
 
@@ -57,9 +57,9 @@ class Graphics:
 
     def draw_moving_player(self, up:bool, right:bool, down: bool, left: bool):
         screen = pygame.display.get_surface()
-        player_img = pygame.image.load('./img/egg.png')
-        image = pygame.image.load('./img/door.png')
-        image2 = pygame.image.load('./img/grass2.png')
+        player_img = pygame.image.load('../img/egg.png')
+        image = pygame.image.load('../img/door.png')
+        image2 = pygame.image.load('../img/grass2.png')
 
         if up:
             self._player_pos[1] -= 10
