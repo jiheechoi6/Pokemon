@@ -22,6 +22,7 @@ class Graphics:
         screen.blit(background_img, (0, 0))
         pygame.draw.rect(screen, (255, 228, 228), (167, 266, 540, 120))
         image = pygame.image.load('./img/start_game_button.png')
+
         screen.blit(image, (190, 270))
 
         pygame.display.update()
@@ -57,6 +58,7 @@ class Graphics:
                 screen.blit(image2, (x_pos, y_pos))
 
         # draw player
+
         if pokemon_type == 0:
             self._player_img_small = './img/pokemon_0_small.png'
         elif pokemon_type == 1:
@@ -65,6 +67,7 @@ class Graphics:
             self._player_img_small = './img/pokemon_2_small.png'
 
         player_img = pygame.image.load(self._player_img_small)
+
         screen.blit(player_img, (420, 300))
         self._player_pos = [420, 300]
 

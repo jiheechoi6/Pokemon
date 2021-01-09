@@ -1,6 +1,8 @@
+import os, os.path
 import sys
 import pygame
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname("graphics.py"), '..')))
 from Presenter.graphics import Graphics
 
 
