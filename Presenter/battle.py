@@ -29,6 +29,8 @@ class Battle:
         pygame.draw.rect(screen, (255, 250, 250), (10, 510, 880, 180))
         label = self.font.render('A wild pokemon has appeared!', 1, (0, 0, 0))
         screen.blit(label, (15, 515))
+        label = self.font.render('Press (Enter) to continue.', 1, (0, 0, 0))
+        screen.blit(label, (15, 650))
         label = self.font.render(str(hp1) + '/' + str(hp1), 1, (0, 0, 0))
         screen.blit(label, (415, 315))
         label = self.font.render(str(hp2) + '/' + str(hp2), 1, (0, 0, 0))
@@ -54,6 +56,8 @@ class Battle:
         screen.blit(label, (15, 555))
         label = self.font.render('(3) 15 hp', 1, (0, 0, 0))
         screen.blit(label, (15, 575))
+        label = self.font.render('Press the 1,2 or 3 key to continue.', 1, (0, 0, 0))
+        screen.blit(label, (15, 650))
         pygame.display.update()
 
     def attack(self, damage: int, is_successful: bool):
@@ -84,6 +88,8 @@ class Battle:
         remain2 = 360 * (self.left2 / self.hp2)
         pygame.draw.line(screen, (0, 0, 128), (420, 400), (max(420, 420 + remain1), 400), 10)
         pygame.draw.line(screen, (0, 0, 128), (120, 150), (max(120, 120 + remain2), 150), 10)
+        label = self.font.render('Press (Enter) to continue.', 1, (0, 0, 0))
+        screen.blit(label, (15, 650))
         pygame.display.update()
 
     def faint(self, is_successful: bool):
@@ -95,6 +101,8 @@ class Battle:
         else:
             label = self.font.render('Your opponent has fainted.', 1, (0, 0, 0))
         screen.blit(label, (15, 515))
+        label = self.font.render('Press (Enter) to continue.', 1, (0, 0, 0))
+        screen.blit(label, (15, 650))
         pygame.display.update()
 
 

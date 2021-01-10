@@ -22,9 +22,7 @@ class Graphics:
         screen.blit(background_img, (0, 0))
         pygame.draw.rect(screen, (255, 228, 228), (167, 266, 540, 120))
         image = pygame.image.load('../img/start_game_button.png')
-
         screen.blit(image, (190, 270))
-
         pygame.display.update()
 
     def create_random_door_positions(self):
@@ -70,7 +68,9 @@ class Graphics:
 
         screen.blit(player_img, (420, 300))
         self._player_pos = [420, 300]
-
+        font = pygame.font.SysFont('monospace', 25)
+        label = font.render('Press the arrow keys to move.', 1, (0, 0, 0))
+        screen.blit(label, (15, 15))
         pygame.display.update()
 
     def draw_moving_player(self, up:bool, right:bool, down: bool, left: bool):
@@ -130,17 +130,17 @@ class Graphics:
             play_again_label = small_font.render("Press any key to play again", True, (255, 255, 255))
             win_img = pygame.image.load('../img/battle_win.png')
             screen.blit(win_img, (0, 0))
-            screen.blit(win_label, (575, 125)) 
-            screen.blit(play_again_label, (525, 175)) 
+            screen.blit(win_label, (575, 125))
+            screen.blit(play_again_label, (525, 175))
 
         else:
             lose_label = large_font.render("Better luck next time ):", True, (255, 255, 255))
             play_again_label = small_font.render("Press any key to play again", True, (255, 255, 255))
             lose_img = pygame.image.load('../img/battle_lose.jpg')
             screen.blit(lose_img, (0, 0))
-            screen.blit(lose_label, (320, 610)) 
-            screen.blit(play_again_label, (425, 655)) 
-        
+            screen.blit(lose_label, (320, 610))
+            screen.blit(play_again_label, (425, 655))
+
         pygame.display.update()
 
     def has_collided(self):
