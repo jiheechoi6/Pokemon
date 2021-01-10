@@ -109,7 +109,6 @@ class Graphics:
         pygame.display.update()
 
     def draw_choose_a_pokemon(self):
-        print("check")
         screen = pygame.display.get_surface()
         background_img = pygame.image.load('../img/background_light.png')
         pokemon0_img = pygame.image.load('../img/pokemon_0.png')

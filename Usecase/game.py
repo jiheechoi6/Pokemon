@@ -8,7 +8,6 @@ class Game:
 
     def botAttack(self):
         attack = randint(1, 6)
-        print("attack ", attack)
         if attack >= 4:
             return 3
         if attack >= 2:

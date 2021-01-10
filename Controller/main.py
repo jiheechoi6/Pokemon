@@ -63,7 +63,6 @@ while True:
                     battle_scene = True
                     enemy = PokemonBot(enemy_type)
                     sequence.start_match(player, enemy)
-                    print(enemy.get_hp(), "enemy hp")
                     battle.draw_battle(player.get_pic(), enemy.get_pic(),
                                player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
         elif battle_scene:
