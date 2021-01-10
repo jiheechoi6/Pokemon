@@ -56,7 +56,7 @@ while True:
                     graphics.draw_moving_player(False, False, False, True)
                 if event.key == pygame.K_RIGHT:
                     graphics.draw_moving_player(False, True, False, False)
-                if event.key == pygame.K_RETURN: # TODO: check for if player overlaps with door
+                if event.key == pygame.K_RETURN and graphics.has_collided():
                     enemy_type = random.randint(0,5) # randomly generates a pkmn
                     grass_scene = False
                     battle_scene = True

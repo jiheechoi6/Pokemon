@@ -138,3 +138,14 @@ class Graphics:
         
         pygame.display.update()
 
+    def has_collided(self):
+        # creating a 1-pixel "hitbox" placed in the middle of the player sprite
+        player_x = self._player_pos[0] + 25
+        player_y = self._player_pos[1] + 25
+        # making "hitboxes" for the doors and checking overlap
+        for position in self._door_positions:
+            x = position[0]
+            y = position[1]
+            if x < player_x < x + 35 and y < player_y < y + 35:
+                return True
+        return False
