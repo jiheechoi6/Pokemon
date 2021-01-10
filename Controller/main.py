@@ -15,8 +15,6 @@ sequence = Sequence()
 battle = Battle()
 graphics.draw_start_game_screen()
 
-battle = Battle()
-
 start_game_scene = True
 choose_pokemon_scene = False
 grass_scene = False
