@@ -66,7 +66,7 @@ class Battle:
             pygame.draw.rect(screen, (255, 250, 250), (410, 310, 380, 130))
             self.left1 = self.left1 - damage
             lost = max(0, self.left1)
-            label1 = self.font.render(str(lost) + '/' + str(self.hp2), 1, (0, 0, 0))
+            label1 = self.font.render(str(lost) + '/' + str(self.hp1), 1, (0, 0, 0))
             screen.blit(label1, (415, 315))
         else:
             label = self.font.render('Your opponent has lost ' + str(damage) + 'hp.', 1, (0, 0, 0))
@@ -74,7 +74,7 @@ class Battle:
             pygame.draw.rect(screen, (255, 250, 250), (110, 60, 380, 130))
             self.left2 = self.left2 - damage
             lost = max(0, self.left2)
-            label1 = self.font.render(str(lost) + '/' + str(self.hp1), 1, (0, 0, 0))
+            label1 = self.font.render(str(lost) + '/' + str(self.hp2), 1, (0, 0, 0))
             screen.blit(label1, (115, 65))
         screen.blit(label, (15, 515))
         pygame.display.update()
