@@ -39,7 +39,7 @@ class Graphics:
                             0 - the leftmost pokemon
                             1 - middle pokemon
                             2 - rightmost pokemon'''
-    def draw_grass_scene(self, pokemon_type: int):
+    def draw_grass_scene(self, pokemon_type: int, played: bool, ml: bool):
         screen = pygame.display.get_surface()
         pygame.draw.rect(screen, (193, 204, 80), (0, 0, 900, 700)) # set background to green
         image = pygame.image.load('../img/door.png')
@@ -71,9 +71,17 @@ class Graphics:
         font = pygame.font.SysFont('monospace', 25)
         label = font.render('Press the arrow keys to move.', 1, (0, 0, 0))
         screen.blit(label, (15, 15))
+        label = font.render('Press (Enter) at a door to fight.', 1, (0, 0, 0))
+        screen.blit(label, (15, 35))
+        if played:
+            pygame.draw.rect(screen, (255, 255, 255), (15, 60, 20, 20))
+            if ml:
+                pygame.draw.rect(screen, (0, 0, 0), (17, 62, 16, 16))
+            label = font.render('ML CPU.', 1, (0, 0, 0))
+            screen.blit(label, (45, 55))
         pygame.display.update()
 
-    def draw_moving_player(self, up:bool, right:bool, down: bool, left: bool):
+    def draw_moving_player(self, up:bool, right:bool, down: bool, left: bool, played: bool, ml: bool):
         screen = pygame.display.get_surface()
         player_img = pygame.image.load(self._player_img_small)
         image = pygame.image.load('../img/door.png')
@@ -99,6 +107,17 @@ class Graphics:
                 screen.blit(image2, (x_pos, y_pos))
 
         screen.blit(player_img, (self._player_pos[0], self._player_pos[1]))
+        font = pygame.font.SysFont('monospace', 25)
+        label = font.render('Press the arrow keys to move.', 1, (0, 0, 0))
+        screen.blit(label, (15, 15))
+        label = font.render('Press (Enter) at a door to fight.', 1, (0, 0, 0))
+        screen.blit(label, (15, 35))
+        if played:
+            pygame.draw.rect(screen, (255, 255, 255), (15, 60, 20, 20))
+            if ml:
+                pygame.draw.rect(screen, (0, 0, 0), (17, 62, 16, 16))
+            label = font.render('ML CPU.', 1, (0, 0, 0))
+            screen.blit(label, (45, 55))
         pygame.display.update()
 
     def draw_choose_a_pokemon(self):
@@ -117,7 +136,6 @@ class Graphics:
         screen.blit(pokemon0_img, (80, 272))  # first pokemon
         screen.blit(pokemon1_img, (370, 280))  # second pokemon
         screen.blit(pokemon2_img, (640, 260))  # third pokemon
-
         pygame.display.update()
 
     def draw_battle_result(self, win: bool):

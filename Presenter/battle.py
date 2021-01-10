@@ -96,7 +96,7 @@ class Battle:
         screen = pygame.display.get_surface()
         pygame.draw.rect(screen, (0, 0, 0), (0, 500, 900, 200))
         pygame.draw.rect(screen, (255, 250, 250), (10, 510, 880, 180))
-        if is_successful:
+        if not is_successful:
             label = self.font.render('You have fainted.', 1, (0, 0, 0))
         else:
             label = self.font.render('Your opponent has fainted.', 1, (0, 0, 0))

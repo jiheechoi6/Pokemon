@@ -23,6 +23,9 @@ battle_result_scene = False
 chosen = False
 player_type = -1 # making the player pokemon an int for easier backsprite handling
 enemy_type = -1
+game_played = 0
+ml_cpu = False
+to_next = False
 
 while True:
     for event in pygame.event.get():
@@ -43,25 +46,30 @@ while True:
                 if 640 < event.pos[0] < 790 and 270 < event.pos[1] < 420:
                     player_type = 2
                 player = Player(player_type)
-                graphics.draw_grass_scene(player_type)
+                graphics.draw_grass_scene(player_type, bool(game_played), ml_cpu)
                 grass_scene = True
                 choose_pokemon_scene = False
         elif grass_scene:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if 15 < event.pos[0] < 35 and 60 < event.pos[1] < 80:
+                    ml_cpu = not ml_cpu
+                    graphics.draw_moving_player(True, False, False, False, bool(game_played), ml_cpu)
+                    graphics.draw_moving_player(False, False, True, False, bool(game_played), ml_cpu)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    graphics.draw_moving_player(True, False, False, False)
+                    graphics.draw_moving_player(True, False, False, False, bool(game_played), ml_cpu)
                 if event.key == pygame.K_DOWN:
-                    graphics.draw_moving_player(False, False, True, False)
+                    graphics.draw_moving_player(False, False, True, False, bool(game_played), ml_cpu)
                 if event.key == pygame.K_LEFT:
-                    graphics.draw_moving_player(False, False, False, True)
+                    graphics.draw_moving_player(False, False, False, True, bool(game_played), ml_cpu)
                 if event.key == pygame.K_RIGHT:
-                    graphics.draw_moving_player(False, True, False, False)
+                    graphics.draw_moving_player(False, True, False, False, bool(game_played), ml_cpu)
                 if event.key == pygame.K_RETURN and graphics.has_collided():
                     enemy_type = random.randint(0,5) # randomly generates a pkmn
                     grass_scene = False
                     battle_scene = True
                     enemy = PokemonBot(enemy_type)
-                    sequence.start_match(player, enemy)
+                    sequence.start_match(player, enemy, ml_cpu)
                     print(enemy.get_hp(), "enemy hp")
                     battle.draw_battle(player.get_pic(), enemy.get_pic(),
                                player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
@@ -71,12 +79,14 @@ while True:
                     battle.choose()
                     chosen = True
                 if chosen:
+                    if to_next:
+                        battle_scene = False
+                        battle_result_scene = True
+                        chosen = False
                     if sequence.match.is_game_over():
-                        if not chosen:
-                            battle.faint(damage[1])
-                        if chosen:
-                            battle_scene = False
-                            battle_result_scene = True
+                        game_played += 1
+                        battle.faint(damage[0])
+                        to_next = True
                     if event.key == pygame.K_1:
                         damage = sequence.round(1)
                         battle.attack(damage[1], damage[0])
@@ -94,9 +104,9 @@ while True:
                 graphics.draw_battle_result(True)
             else:
                 graphics.draw_battle_result(False)
-             
+
             if event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN:
-                # resetting everything back to original 
+                # resetting everything back to original
                 graphics.draw_choose_a_pokemon()
                 choose_pokemon_scene = True
                 start_game_scene = False
@@ -104,6 +114,7 @@ while True:
                 battle_scene = True
                 battle_result_scene = False
                 chosen = False
+                to_next = False
 
 
 
