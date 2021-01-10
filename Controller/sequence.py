@@ -1,7 +1,7 @@
 from Usecase.match import Match
 from Usecase.game import Game
 
-class sequence:
+class Sequence:
     def __init__(self):
         self.match = None
         self.pokemon_type = None

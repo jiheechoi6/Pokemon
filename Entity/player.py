@@ -2,6 +2,8 @@ from Entity.pokemon import Pokemon
 
 class Player(Pokemon):
     def __init__(self, pokemon_type: int):
+        global pic
+        global name
         # Dependent of what Pokemon the player chose in the beginning menu
         if pokemon_type == 0:
             pic = '../img/pokemon_0.png'

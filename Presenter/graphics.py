@@ -135,7 +135,6 @@ class Graphics:
             lose_img = pygame.image.load('../img/battle_lose.jpg')
             screen.blit(lose_img, (0, 0))
             screen.blit(label, (320, 610)) 
-
         
         pygame.display.update()
 

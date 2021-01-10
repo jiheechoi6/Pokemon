@@ -11,7 +11,7 @@ class Match:
 
     def __init__(self, pokemon_type: int):
         self._player = Player(pokemon_type)
-        self._pokemon_bot = PokemonBot(random.randint(5))
+        self._pokemon_bot = PokemonBot(random.randint(1, 5))
 
     def attack(self, attack_strength: int) -> None:
         self._pokemon_bot.updateHp(-attack_strength)
