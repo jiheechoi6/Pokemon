@@ -4,7 +4,7 @@ class PokemonBot(Pokemon):
     def __init__(self, pokemon_type: int):
         if pokemon_type == 0:
             max_hp = 60
-            pic = '../img/pokemon_1_small.png'
+            pic = '../img/pokemon_1.png'
             name = 'Togepi'
         elif pokemon_type == 1:
             max_hp = 70
@@ -20,6 +20,6 @@ class PokemonBot(Pokemon):
             name = 'Lugia'
         else:
             max_hp = 100
-            pic = '../img/pokemon_2_small.png'
+            pic = '../img/pokemon_2.png'
             name = 'Bulbasaur'
         super().__init__(pokemon_type, max_hp, pic, name)
