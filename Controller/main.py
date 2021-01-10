@@ -13,13 +13,15 @@ graphics = Graphics()
 battle = Battle()
 graphics.draw_start_game_screen()
 
+battle = Battle()
+
 start_game_scene = True
 choose_pokemon_scene = False
 grass_scene = False
 battle_scene = True
 battle_result_scene = False # need to trigger this to true when game is over
 player_type = -1 # making the player pokemon an int for easier backsprite handling
-enemy_type = -1 
+enemy_type = -1
 
 while True:
     for event in pygame.event.get():
@@ -62,3 +64,4 @@ while True:
             battle.draw_battle(player.get_overworld_sprite(), enemy.get_pic(), player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
         elif battle_result_scene:
             graphics.draw_battle_result(True) #hard coded to player win for now
+
