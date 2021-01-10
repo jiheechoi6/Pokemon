@@ -15,13 +15,15 @@ sequence = Sequence()
 battle = Battle()
 graphics.draw_start_game_screen()
 
+battle = Battle()
+
 start_game_scene = True
 choose_pokemon_scene = False
 grass_scene = False
 battle_scene = True
 battle_result_scene = False 
 player_type = -1 # making the player pokemon an int for easier backsprite handling
-enemy_type = -1 
+enemy_type = -1
 
 while True:
     for event in pygame.event.get():
