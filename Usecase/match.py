@@ -9,7 +9,7 @@ class Match:
     _players: Player
     _pokemon_bot: PokemonBot
 
-    def __init__(self, p1: Player, p2: Player):
+    def __init__(self, p1: Player, p2: PokemonBot):
         self._player = p1
         self._pokemon_bot = p2
 
