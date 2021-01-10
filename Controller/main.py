@@ -23,8 +23,6 @@ battle_result_scene = False
 chosen = False
 player_type = -1 # making the player pokemon an int for easier backsprite handling
 enemy_type = -1
-game_played = 0
-ml_cpu = False
 to_next = False
 
 while True:
@@ -46,30 +44,25 @@ while True:
                 if 640 < event.pos[0] < 790 and 270 < event.pos[1] < 420:
                     player_type = 2
                 player = Player(player_type)
-                graphics.draw_grass_scene(player_type, bool(game_played), ml_cpu)
+                graphics.draw_grass_scene(player_type)
                 grass_scene = True
                 choose_pokemon_scene = False
         elif grass_scene:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if 15 < event.pos[0] < 35 and 60 < event.pos[1] < 80:
-                    ml_cpu = not ml_cpu
-                    graphics.draw_moving_player(True, False, False, False, bool(game_played), ml_cpu)
-                    graphics.draw_moving_player(False, False, True, False, bool(game_played), ml_cpu)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    graphics.draw_moving_player(True, False, False, False, bool(game_played), ml_cpu)
+                    graphics.draw_moving_player(True, False, False, False)
                 if event.key == pygame.K_DOWN:
-                    graphics.draw_moving_player(False, False, True, False, bool(game_played), ml_cpu)
+                    graphics.draw_moving_player(False, False, True, False)
                 if event.key == pygame.K_LEFT:
-                    graphics.draw_moving_player(False, False, False, True, bool(game_played), ml_cpu)
+                    graphics.draw_moving_player(False, False, False, True)
                 if event.key == pygame.K_RIGHT:
-                    graphics.draw_moving_player(False, True, False, False, bool(game_played), ml_cpu)
+                    graphics.draw_moving_player(False, True, False, False)
                 if event.key == pygame.K_RETURN and graphics.has_collided():
                     enemy_type = random.randint(0,5) # randomly generates a pkmn
                     grass_scene = False
                     battle_scene = True
                     enemy = PokemonBot(enemy_type)
-                    sequence.start_match(player, enemy, ml_cpu)
+                    sequence.start_match(player, enemy)
                     print(enemy.get_hp(), "enemy hp")
                     battle.draw_battle(player.get_pic(), enemy.get_pic(),
                                player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
@@ -84,7 +77,6 @@ while True:
                         battle_result_scene = True
                         chosen = False
                     if sequence.match.is_game_over():
-                        game_played += 1
                         battle.faint(damage[0])
                         to_next = True
                     if event.key == pygame.K_1:
