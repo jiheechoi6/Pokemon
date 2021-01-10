@@ -44,7 +44,6 @@ while True:
                 grass_scene = True
                 choose_pokemon_scene = False
         elif grass_scene:
-            print(self_pkmn)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     graphics.draw_moving_player(True, False, False, False)

@@ -14,7 +14,7 @@ class Player(Pokemon):
             name = 'Bulbasaur'
         super().__init__(pokemon_type, 80, pic, name)
 
-    def __str__(self):
+    def __str__(self): # for debugging
         return f'{self.get_name()} - type: {self.getPokemonType()}'
 
     def get_overworld_sprite(self):
