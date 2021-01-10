@@ -77,6 +77,13 @@ class Battle:
             label1 = self.font.render(str(lost) + '/' + str(self.hp2), 1, (0, 0, 0))
             screen.blit(label1, (115, 65))
         screen.blit(label, (15, 515))
+
+        pygame.draw.line(screen, (255, 0, 0), (420, 400), (780, 400), 10)
+        pygame.draw.line(screen, (255, 0, 0), (120, 150), (480, 150), 10)
+        remain1 = 360 * (self.left1 / self.hp1)
+        remain2 = 360 * (self.left2 / self.hp2)
+        pygame.draw.line(screen, (0, 0, 128), (420, 400), (max(420, 420 + remain1), 400), 10)
+        pygame.draw.line(screen, (0, 0, 128), (120, 150), (max(120, 120 + remain2), 150), 10)
         pygame.display.update()
 
     def faint(self, is_successful: bool):
