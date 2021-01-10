@@ -19,7 +19,8 @@ start_game_scene = True
 choose_pokemon_scene = False
 grass_scene = False
 battle_scene = True
-battle_result_scene = False 
+battle_result_scene = False
+chosen = False
 player_type = -1 # making the player pokemon an int for easier backsprite handling
 enemy_type = -1
 
@@ -59,16 +60,38 @@ while True:
                     enemy_type = random.randint(0,5) # randomly generates a pkmn
                     grass_scene = False
                     battle_scene = True
+                    enemy = PokemonBot(enemy_type)
+                    sequence.start_match(player, enemy)
+                    battle.draw_battle(player.get_pic(), enemy.get_pic(),
+                               player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
         elif battle_scene:
-            enemy = PokemonBot(enemy_type)
-            sequence.start_match(player, enemy)
-            battle.draw_battle(player.get_overworld_sprite(), enemy.get_pic(), player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
-            if sequence.match.is_game_over():
-                battle_scene = False
-                battle_result_scene = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and not chosen:
+                    battle.choose()
+                    chosen = True
+                if chosen:
+                    if event.key == pygame.K_1:
+                        damage = sequence.round(1)
+                        battle.attack(damage[1], damage[0])
+                        chosen = False
+                    if event.key == pygame.K_2:
+                        damage = sequence.round(2)
+                        battle.attack(damage[1], damage[0])
+                        chosen = False
+                    if event.key == pygame.K_3:
+                        damage = sequence.round(3)
+                        battle.attack(damage[1], damage[0])
+                        chosen = False
+                    if sequence.match.is_game_over():
+                        battle_scene = False
+                        battle_result_scene = True
         elif battle_result_scene:
             if sequence.match.is_player_win():
                 graphics.draw_battle_result(True)
             else:
                 graphics.draw_battle_result(False)
-          
+
+
+
+
+
