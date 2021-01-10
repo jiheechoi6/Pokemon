@@ -39,6 +39,7 @@ while True:
                     player_type = 1
                 if 640 < event.pos[0] < 790 and 270 < event.pos[1] < 420:
                     player_type = 2
+                player = Player(player_type)
                 graphics.draw_grass_scene(player_type)
                 grass_scene = True
                 choose_pokemon_scene = False
@@ -58,6 +59,7 @@ while True:
                     grass_scene = False
                     battle_scene = True
         elif battle_scene:
-            battle.draw_battle(self_pkmn.get_overworld_sprite(), enemy_pkmn.get_pic(), self_pkmn.get_hp(), enemy_pkmn.get_hp(), self_pkmn.get_name(), enemy_pkmn.get_name())
+            enemy = PokemonBot(enemy_type)
+            battle.draw_battle(player.get_overworld_sprite(), enemy.get_pic(), player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
         elif battle_result_scene:
             graphics.draw_battle_result(True) #hard coded to player win for now
