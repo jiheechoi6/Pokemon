@@ -7,6 +7,8 @@ class Battle:
         self.hp2 = None
         self.left1 = None
         self.left2 = None
+        self.name1 = None
+        self.name2 = None
 
     def draw_battle(self, pic1: str, pic2: str, hp1: int, hp2: int, name1: str, name2: str):
         self.hp1 = hp1
@@ -35,9 +37,11 @@ class Battle:
         screen.blit(label, (415, 315))
         label = self.font.render(str(hp2) + '/' + str(hp2), 1, (0, 0, 0))
         screen.blit(label, (115, 65))
-        label = self.font.render(name1, 1, (0, 0, 0))
+        self.name1 = name1
+        self.name2 = name2
+        label = self.font.render(self.name1, 1, (0, 0, 0))
         screen.blit(label, (600, 315))
-        label = self.font.render(name2, 1, (0, 0, 0))
+        label = self.font.render(self.name2, 1, (0, 0, 0))
         screen.blit(label, (300, 65))
         pygame.draw.line(screen, (0, 0, 128), (420, 400), (780, 400), 10)
         pygame.draw.line(screen, (0, 0, 128), (120, 150), (480, 150), 10)
@@ -90,6 +94,10 @@ class Battle:
         pygame.draw.line(screen, (0, 0, 128), (120, 150), (max(120, 120 + remain2), 150), 10)
         label = self.font.render('Press (Enter) to continue.', 1, (0, 0, 0))
         screen.blit(label, (15, 650))
+        label = self.font.render(self.name1, 1, (0, 0, 0))
+        screen.blit(label, (600, 315))
+        label = self.font.render(self.name2, 1, (0, 0, 0))
+        screen.blit(label, (300, 65))
         pygame.display.update()
 
     def faint(self, is_successful: bool):
