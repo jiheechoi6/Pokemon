@@ -62,6 +62,7 @@ while True:
                     battle_scene = True
                     enemy = PokemonBot(enemy_type)
                     sequence.start_match(player, enemy)
+                    print(enemy.get_hp(), "enemy hp")
                     battle.draw_battle(player.get_pic(), enemy.get_pic(),
                                player.get_hp(), enemy.get_hp(), player.get_name(), enemy.get_name())
         elif battle_scene:
@@ -70,6 +71,12 @@ while True:
                     battle.choose()
                     chosen = True
                 if chosen:
+                    if sequence.match.is_game_over():
+                        if not chosen:
+                            battle.faint(damage[1])
+                        if chosen:
+                            battle_scene = False
+                            battle_result_scene = True
                     if event.key == pygame.K_1:
                         damage = sequence.round(1)
                         battle.attack(damage[1], damage[0])
@@ -82,9 +89,6 @@ while True:
                         damage = sequence.round(3)
                         battle.attack(damage[1], damage[0])
                         chosen = False
-                    if sequence.match.is_game_over():
-                        battle_scene = False
-                        battle_result_scene = True
         elif battle_result_scene:
             if sequence.match.is_player_win():
                 graphics.draw_battle_result(True)

@@ -19,6 +19,4 @@ class Player(Pokemon):
     def __str__(self): # for debugging
         return f'{self.get_name()} - type: {self.getPokemonType()}'
 
-    def get_overworld_sprite(self):
-        return f'../img/pokemon_{self.getPokemonType()}_small.png'
-    
+

@@ -30,6 +30,6 @@ class Pokemon:
 
     def get_pic(self):
         return self._pic
-    
+
     def get_name(self):
         return self._name
