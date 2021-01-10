@@ -94,6 +94,17 @@ while True:
                 graphics.draw_battle_result(True)
             else:
                 graphics.draw_battle_result(False)
+             
+            if event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN:
+                # resetting everything back to original 
+                graphics.draw_choose_a_pokemon()
+                choose_pokemon_scene = True
+                start_game_scene = False
+                grass_scene = False
+                battle_scene = True
+                battle_result_scene = False
+                chosen = False
+
 
 
 

@@ -122,19 +122,24 @@ class Graphics:
 
     def draw_battle_result(self, win: bool):
         screen = pygame.display.get_surface()
-        my_font = pygame.font.SysFont('freesansbold', 72)
+        large_font = pygame.font.SysFont('freesansbold', 72)
+        small_font = pygame.font.SysFont('freesansbold', 36)
 
         if win:
-            label = my_font.render("Victory!", True, (255, 255, 255))
+            win_label = large_font.render("Victory!", True, (255, 255, 255))
+            play_again_label = small_font.render("Press any key to play again", True, (255, 255, 255))
             win_img = pygame.image.load('../img/battle_win.png')
             screen.blit(win_img, (0, 0))
-            screen.blit(label, (575, 125)) 
+            screen.blit(win_label, (575, 125)) 
+            screen.blit(play_again_label, (525, 175)) 
 
         else:
-            label = my_font.render("Better luck next time ):", True, (255, 255, 255))
+            lose_label = large_font.render("Better luck next time ):", True, (255, 255, 255))
+            play_again_label = small_font.render("Press any key to play again", True, (255, 255, 255))
             lose_img = pygame.image.load('../img/battle_lose.jpg')
             screen.blit(lose_img, (0, 0))
-            screen.blit(label, (320, 610)) 
+            screen.blit(lose_label, (320, 610)) 
+            screen.blit(play_again_label, (425, 655)) 
         
         pygame.display.update()
 
